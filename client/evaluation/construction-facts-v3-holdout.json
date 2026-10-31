@@ -1,0 +1,18 @@
+{
+  "version": "construction-facts-v3-holdout",
+  "description": "Fresh synthetic holdout authored after v2 was exposed; no runtime import and no tuning on these labels in this round.",
+  "cases": [
+    { "id": "N01", "split": "holdout", "project": "食品厂扩建", "lines": ["主体阶段配备质检员3人。", "主体阶段配备质检员5名。"], "expected": "明确矛盾" },
+    { "id": "N02", "split": "holdout", "project": "小学屋面翻修", "lines": ["屋面防水面积2000㎡。", "屋面防水面积2000平方米。"], "expected": "无问题" },
+    { "id": "N03", "split": "holdout", "project": "跨线桥", "lines": ["主体阶段钢筋用量2.5吨。", "主体阶段钢筋用量2500kg。"], "expected": "无问题" },
+    { "id": "N04", "split": "holdout", "project": "医院供配电", "lines": ["安装阶段电缆长度不低于800m。", "安装阶段电缆长度不超过900m。"], "expected": "无问题" },
+    { "id": "N05", "split": "holdout", "project": "商业综合体", "lines": ["装修阶段预计劳动力约300人。", "装修阶段预计劳动力310人。"], "expected": "疑似不一致" },
+    { "id": "N06", "split": "holdout", "project": "污水厂", "lines": ["主体阶段混凝土设计量200m³。", "主体阶段混凝土采购量230立方米。"], "expected": "无问题" },
+    { "id": "N07", "split": "holdout", "project": "数据中心", "lines": ["安装阶段配置冷机3台。", "安装阶段配置冷机4台。"], "expected": "明确矛盾" },
+    { "id": "N08", "split": "holdout", "project": "园区管网", "lines": ["安装阶段给水管长度400m。", "安装阶段排水管长度600m。"], "expected": "无问题" },
+    { "id": "N09", "split": "holdout", "project": "研发中心", "lines": ["安装阶段电缆总量1200m。"], "tableRow": { "label": "电缆", "unit": "m", "quantity": "1000", "gridSpan": 2 }, "expected": "疑似不一致" },
+    { "id": "N10", "split": "holdout", "project": "康养楼", "lines": ["室内湿态摩擦系数0.5。", "室外湿态摩擦系数0.6。"], "expected": "无问题" },
+    { "id": "N11", "split": "holdout", "project": "办公楼机电", "lines": ["主体阶段消防水泵2台。", "主体阶段生活水泵3台。"], "expected": "无问题" },
+    { "id": "N12", "split": "holdout", "project": "体育馆", "lines": ["主体阶段管道长度3.2km。", "主体阶段管道长度3200m。"], "expected": "无问题" }
+  ]
+}

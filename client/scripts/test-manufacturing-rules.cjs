@@ -1,0 +1,32 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const { extractRequirements, evaluateAll, riskReport } = require('../electron/services/manufacturingRules.cjs');
+const demo = path.resolve(__dirname, '../../../demo_data');
+const tender = [{ name: '招标文件.md', content: fs.readFileSync(path.join(demo, '招标文件.md'), 'utf8') }];
+const enterprise = [{ name: '企业资料.md', content: fs.readFileSync(path.join(demo, '企业资料.md'), 'utf8') }];
+const requirements = extractRequirements(tender);
+assert.ok(requirements.length >= 10, `只抽取到 ${requirements.length} 条`);
+assert.ok(requirements.every((r) => r.page === null), '不得伪造页码');
+const matrix = evaluateAll(requirements, enterprise, '2026-11-30');
+function expect(key, status) {
+  const row = matrix.find((item) => item.requirement.field === key && item.requirement.text.includes(key === 'pressure' ? '不低于' : ''));
+  assert.ok(row, `${key} 要求缺失`);
+  assert.equal(row.status, status, `${key} ${row.reason}`);
+}
+expect('delivery', '不满足');
+expect('warranty', '不满足');
+expect('pressure', '不满足');
+expect('flow', '满足');
+expect('power', '满足');
+expect('certificate', '不满足');
+expect('price', '待核实');
+const rejection = matrix.find((row) => row.requirement.text.includes('低于0.8 MPa'));
+assert.equal(rejection?.status, '不满足', '明确的低于门槛即无效应由程序判断');
+const missing = evaluateAll(requirements, [], '2026-11-30');
+assert.ok(missing.every((row) => row.status === '待核实'), '缺证据不能判满足或不满足');
+const risks = riskReport(matrix, enterprise);
+assert.ok(risks.some((r) => r.issue === '报价小计算术不一致'));
+assert.ok(risks.some((r) => r.issue === '报价总额与分项小计不一致'));
+assert.ok(risks.some((r) => r.issue === '报价小计算术不一致' && r.tenderEvidence?.file === '招标文件.md'));
+console.log(`PASS: ${requirements.length} 条要求，${matrix.length} 条响应，${risks.length} 项风险，缺证据全部待核实`);

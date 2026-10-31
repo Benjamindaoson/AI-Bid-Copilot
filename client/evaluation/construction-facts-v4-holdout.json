@@ -1,0 +1,18 @@
+{
+  "version": "construction-facts-v4-holdout",
+  "description": "Synthetic holdout frozen before interval comparison changes. Never imported by runtime.",
+  "cases": [
+    { "id": "V401", "split": "holdout", "project": "冷链仓库", "lines": ["安装阶段冷库通风量不低于400m³。", "安装阶段冷库通风量不超过800m³。"], "expected": "无问题" },
+    { "id": "V402", "split": "holdout", "project": "电池车间", "lines": ["安装阶段通风量不低于900m³。", "安装阶段通风量不超过800m³。"], "expected": "明确矛盾" },
+    { "id": "V403", "split": "holdout", "project": "净水站", "lines": ["主体阶段水池容量不低于500m³。", "主体阶段水池容量为600m³。"], "expected": "无问题" },
+    { "id": "V404", "split": "holdout", "project": "净水站", "lines": ["主体阶段水池容量不低于500m³。", "主体阶段水池容量为400m³。"], "expected": "疑似不一致" },
+    { "id": "V405", "split": "holdout", "project": "物流中心", "lines": ["装饰阶段照明功率不超过20kW。", "装饰阶段照明功率为18kW。"], "expected": "无问题" },
+    { "id": "V406", "split": "holdout", "project": "桥梁维修", "lines": ["主体阶段脚手架高度不超过15m。", "主体阶段脚手架高度不低于15m。"], "expected": "疑似不一致" },
+    { "id": "V407", "split": "holdout", "project": "影剧院", "lines": ["安装阶段排烟风机配置3台。", "安装阶段排烟风机配置4台。"], "expected": "明确矛盾" },
+    { "id": "V408", "split": "holdout", "project": "水厂改造", "lines": ["主体阶段给水泵配备2台。", "主体阶段排水泵配备3台。"], "expected": "无问题" },
+    { "id": "V409", "split": "holdout", "project": "康复楼", "lines": ["室内走廊湿态摩擦系数0.6。", "室外走廊湿态摩擦系数0.5。"], "expected": "无问题" },
+    { "id": "V410", "split": "holdout", "project": "厂区消防", "lines": ["主体阶段消防蓄水池容积500m³。", "主体阶段生活蓄水池容积300m³。"], "expected": "无问题" },
+    { "id": "V411", "split": "holdout", "project": "档案馆", "lines": ["主体阶段楼板厚度120mm。", "主体阶段楼板厚度12cm。"], "expected": "无问题" },
+    { "id": "V412", "split": "holdout", "project": "培训基地", "lines": ["装修阶段预计施工人数约100人。", "装修阶段预计施工人数110人。"], "expected": "疑似不一致" }
+  ]
+}

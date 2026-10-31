@@ -1,0 +1,26 @@
+{
+  "version": "construction-facts-v2",
+  "description": "Synthetic development and sealed holdout cases. Never loaded by application runtime.",
+  "cases": [
+    { "id": "D01", "split": "dev", "project": "厂房改造", "lines": ["主体阶段配备消防员2人。", "主体阶段配备消防员3名。"], "expected": "明确矛盾" },
+    { "id": "D02", "split": "dev", "project": "物流园", "lines": ["基础阶段配置电工8人。", "主体阶段配置电工12人。"], "expected": "无问题" },
+    { "id": "D03", "split": "dev", "project": "医院机电", "lines": ["主体阶段管径1200mm。", "主体阶段管径120cm。"], "expected": "无问题" },
+    { "id": "D04", "split": "dev", "project": "展馆土建", "lines": ["商品混凝土8240m³。", "商品混凝土15624立方米。"], "expected": "疑似不一致" },
+    { "id": "D05", "split": "dev", "project": "学校改造", "lines": ["主体阶段砂浆总量100m³。", "主体阶段砂浆采购量120m³。"], "expected": "无问题" },
+    { "id": "D06", "split": "dev", "project": "设备采购", "lines": ["主体阶段设备报价100万元。", "主体阶段设备报价1000000元。"], "expected": "无问题" },
+    { "id": "D07", "split": "dev", "project": "设备采购", "lines": ["主体阶段设备报价100万元。", "主体阶段设备报价110万元。"], "expected": "明确矛盾" },
+    { "id": "D08", "split": "dev", "project": "综合楼", "lines": ["主体阶段配置安全员2人。", "主体阶段配置安全员2名。"], "expected": "无问题" },
+    { "id": "H01", "split": "holdout", "project": "校区翻新", "lines": ["装修阶段配备保洁员4人。", "装修阶段配备保洁员5人。"], "expected": "明确矛盾" },
+    { "id": "H02", "split": "holdout", "project": "跨河桥梁", "lines": ["主体阶段钢筋120t。", "主体阶段钢筋120000kg。"], "expected": "无问题" },
+    { "id": "H03", "split": "holdout", "project": "市政管网", "lines": ["安装阶段管道长度1.5km。", "安装阶段管道长度1500m。"], "expected": "无问题" },
+    { "id": "H04", "split": "holdout", "project": "厂区路面", "lines": ["路面面积520㎡。", "路面面积550平方米。"], "expected": "疑似不一致" },
+    { "id": "H05", "split": "holdout", "project": "机电改造", "lines": ["主体阶段设备7台。", "基础阶段设备5台。"], "expected": "无问题" },
+    { "id": "H06", "split": "holdout", "project": "仓储中心", "lines": ["主体阶段砂浆设计量30m³。", "主体阶段砂浆采购量34m³。"], "expected": "无问题" },
+    { "id": "H07", "split": "holdout", "project": "住宅配套", "lines": ["高峰阶段预计劳动力400人。", "高峰阶段预计劳动力420人。"], "expected": "疑似不一致" },
+    { "id": "H08", "split": "holdout", "project": "道路照明", "lines": ["安装阶段电缆长度不超过500m。", "安装阶段电缆长度不低于500m。"], "expected": "疑似不一致" },
+    { "id": "H09", "split": "holdout", "project": "研发楼", "lines": ["主体阶段商品混凝土250m³。"], "tableRow": { "label": "商品混凝土", "unit": "m³", "quantity": "200", "gridSpan": 2 }, "expected": "疑似不一致" },
+    { "id": "H10", "split": "holdout", "project": "养老中心", "lines": ["主体阶段配备专职安全员2人。", "主体阶段配备安全管理人员4人。"], "expected": "疑似不一致" },
+    { "id": "H11", "split": "holdout", "project": "无障碍改造", "lines": ["室内湿态摩擦系数0.6。", "室外湿态摩擦系数0.5。"], "expected": "无问题" },
+    { "id": "H12", "split": "holdout", "project": "展厅装修", "lines": ["装修阶段预计施工人数约420人。", "装修阶段预计施工人数421人。"], "expected": "疑似不一致" }
+  ]
+}

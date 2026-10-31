@@ -1,0 +1,89 @@
+import type { SectionId } from '../shared/types/navigation';
+import type { SettingsPageRequest } from '../features/settings/types';
+import { getAppMenuItemById } from './menuConfig';
+import ContentExpansionReplaceTestPage from '../features/developer/pages/ContentExpansionReplaceTestPage';
+import ContentLayoutBudgetTestPage from '../features/developer/pages/ContentLayoutBudgetTestPage';
+import DeveloperDemoPage, { isDeveloperDemoSection } from '../features/developer/pages/DeveloperDemoPage';
+import DeveloperMultimodalTestPage from '../features/developer/pages/DeveloperMultimodalTestPage';
+import AgentTestPage from '../features/developer/pages/AgentTestPage';
+import DeveloperTestPage from '../features/developer/pages/DeveloperTestPage';
+import MyTemplatesPage from '../features/export-format/pages/MyTemplatesPage';
+import DuplicateCheckPage from '../features/duplicate-check/pages/DuplicateCheckPage';
+import CredentialLibraryPage from '../features/credential-library/pages/CredentialLibraryPage';
+import KnowledgeBasePage from '../features/knowledge-base/pages/KnowledgeBasePage';
+import RejectionCheckPage from '../features/rejection-check/pages/RejectionCheckPage';
+import BlindCheckPage from '../features/blind-check/pages/BlindCheckPage';
+import PluginsPage from '../features/plugins/pages/PluginsPage';
+import SettingsPage from '../features/settings/pages/SettingsPage';
+import TechnicalPlanHome from '../features/technical-plan/pages/TechnicalPlanHome';
+import ManufacturingBidPage from '../features/manufacturing-bid/ManufacturingBidPage';
+import ConstructionCheckPage from '../features/construction-check/ConstructionCheckPage';
+import FeasibilityReportHome from '../features/feasibility-report/pages/FeasibilityReportHome';
+import SecondaryMenuPage from '../shared/ui/SecondaryMenuPage';
+
+interface AppRouterProps {
+  activeSection: SectionId;
+  developerMode: boolean;
+  onDeveloperModeChange: (developerMode: boolean) => void;
+  onSectionChange: (section: SectionId) => void;
+  registerLeaveGuard?: (guard: ((nextSection?: string) => Promise<boolean>) | null) => void;
+  settingsRequest?: SettingsPageRequest | null;
+  onSettingsRequestHandled?: () => void;
+}
+
+function AppRouter({ activeSection, developerMode, onDeveloperModeChange, onSectionChange, registerLeaveGuard, settingsRequest, onSettingsRequestHandled }: AppRouterProps) {
+  const activeMenuItem = getAppMenuItemById(activeSection, developerMode);
+
+  if (activeMenuItem?.children?.length) {
+    return <SecondaryMenuPage menuItem={activeMenuItem} onNavigate={onSectionChange} />;
+  }
+
+  if (isDeveloperDemoSection(activeSection)) {
+    return <DeveloperDemoPage sectionId={activeSection} />;
+  }
+
+  switch (activeSection) {
+    case 'technical-plan':
+      return <TechnicalPlanHome registerLeaveGuard={registerLeaveGuard} onNavigate={onSectionChange} />;
+    case 'manufacturing-bid':
+      return <ManufacturingBidPage onNavigate={onSectionChange} />;
+    case 'construction-check':
+      return <ConstructionCheckPage />;
+    case 'feasibility-report':
+      return <FeasibilityReportHome registerLeaveGuard={registerLeaveGuard} />;
+    case 'document-knowledge-base':
+      return <KnowledgeBasePage />;
+    case 'credential-library':
+      return <CredentialLibraryPage developerMode={developerMode} />;
+    case 'resources':
+      return <PluginsPage />;
+    case 'plugin-manager':
+      return <PluginsPage />;
+    case 'duplicate-check':
+      return <DuplicateCheckPage />;
+    case 'rejection-check':
+      return <RejectionCheckPage />;
+    case 'blind-check':
+      return <BlindCheckPage />;
+    case 'template-settings':
+      return <MyTemplatesPage />;
+    case 'developer-test':
+      return null;
+    case 'developer-json-test':
+      return <DeveloperTestPage />;
+    case 'developer-multimodal-test':
+      return <DeveloperMultimodalTestPage />;
+    case 'developer-expansion-replace-test':
+      return <ContentExpansionReplaceTestPage />;
+    case 'developer-layout-budget-test':
+      return <ContentLayoutBudgetTestPage />;
+    case 'developer-agent-test':
+      return <AgentTestPage />;
+    case 'settings':
+      return <SettingsPage onDeveloperModeChange={onDeveloperModeChange} request={settingsRequest} onRequestHandled={onSettingsRequestHandled} registerLeaveGuard={registerLeaveGuard} />;
+    default:
+      return null;
+  }
+}
+
+export default AppRouter;

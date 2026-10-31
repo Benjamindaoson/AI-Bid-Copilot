@@ -1,0 +1,11 @@
+{
+  "projectName": "yibiao-client",
+  "appId": "com.yibiao.openbidkit",
+  "productName": "投标智能体",
+  "buildId": "development-build",
+  "gitCommitSha": "",
+  "builtAt": "",
+  "keyId": "development-build-key",
+  "algorithm": "ECDSA_P256_SHA256",
+  "signature": ""
+}

@@ -1,0 +1,14 @@
+{
+  "deadline": "2027-03-01",
+  "items": [
+    { "contains": "安全生产许可证", "mandatory": true, "status": "满足" },
+    { "contains": "专职安全员", "mandatory": true, "status": "不满足" },
+    { "contains": "总工期", "mandatory": true, "status": "不满足" },
+    { "contains": "保修期", "mandatory": true, "status": "满足" },
+    { "contains": "临时用电方案", "mandatory": true, "status": "待核实" },
+    { "contains": "基坑监测措施", "mandatory": true, "status": "待核实" },
+    { "contains": "深基坑支护方案", "mandatory": true, "status": "待核实" },
+    { "contains": "进度网络计划", "mandatory": false, "status": "待核实" },
+    { "contains": "适老化防滑措施", "mandatory": false, "status": "待核实" }
+  ]
+}

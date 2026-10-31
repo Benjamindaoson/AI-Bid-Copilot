@@ -1,0 +1,12 @@
+{
+  "deadline": "2027-04-15",
+  "items": [
+    { "contains": "安全生产管理人员", "mandatory": true, "status": "满足" },
+    { "contains": "建设工期", "mandatory": true, "status": "待核实" },
+    { "contains": "保修期限", "mandatory": true, "status": "满足" },
+    { "contains": "施工总平面布置图", "mandatory": true, "status": "待核实" },
+    { "contains": "扬尘治理措施", "mandatory": true, "status": "待核实" },
+    { "contains": "防火封堵材料", "mandatory": true, "status": "待核实" },
+    { "contains": "安全文明施工措施", "mandatory": false, "status": "待核实" }
+  ]
+}

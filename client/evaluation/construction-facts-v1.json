@@ -1,0 +1,18 @@
+{
+  "version": "construction-facts-v1",
+  "description": "Synthetic independent review cases; no real tender content. Runtime modules do not load this file.",
+  "cases": [
+    { "id": "staff-conflict", "focus": "staff-count", "expected": "明确矛盾", "lines": ["本项目配备专职安全员2人。", "项目组织机构配置专职安全员4人。"] },
+    { "id": "staff-by-stage", "focus": "staff-count", "expected": "无问题", "lines": ["基础施工阶段配备专职安全员2人。", "主体施工阶段配备专职安全员4人。"] },
+    { "id": "staff-unspecified-stage", "focus": "staff-count", "expected": "疑似不一致", "lines": ["项目配备专职安全员2人。", "主体施工阶段配置专职安全员4人。"] },
+    { "id": "staff-one-source", "focus": "staff-count", "expected": "证据不足", "lines": ["项目配备专职安全员2人。"] },
+    { "id": "material-same", "focus": "material-quantity", "expected": "无问题", "lines": ["商品混凝土约8240m³。", "材料计划记录商品混凝土8240m3。"] },
+    { "id": "material-scope-unknown", "focus": "material-quantity", "expected": "疑似不一致", "lines": ["商品混凝土约8240m³。", "采购计划记录商品混凝土15624m³。"] },
+    { "id": "material-one-source", "focus": "material-quantity", "expected": "证据不足", "lines": ["商品混凝土约8240m³。"] },
+    { "id": "workforce-same", "focus": "workforce-peak", "expected": "无问题", "lines": ["高峰期投入劳动力363人。"], "stageTotals": [200, 363, 250] },
+    { "id": "workforce-plan-gap", "focus": "workforce-peak", "expected": "疑似不一致", "lines": ["高峰期投入劳动力420人。"], "stageTotals": [200, 363, 250] },
+    { "id": "slip-same", "focus": "anti-slip", "expected": "无问题", "lines": ["潮湿状态摩擦系数≥0.6。", "湿态 COF ≥0.6。"] },
+    { "id": "slip-different", "focus": "anti-slip", "expected": "疑似不一致", "lines": ["潮湿状态摩擦系数≥0.6。", "湿态 COF ≥0.8。"] },
+    { "id": "wells-unequal-without-scope", "focus": "dewatering-closure", "expected": "证据不足", "lines": ["降水井20座。", "竣工前封堵18座。"] }
+  ]
+}
